@@ -1,7 +1,9 @@
-FROM python:2.7-onbuild
+FROM python:3
+#:2.7-onbuild
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN pip install --no-cache-dir -r requirements.txt
-CMD ["python", "-u", "api.py", "${MYHOST}"]
+CMD ["python3", "-u", "api.py", "${MYHOST}"]
 
-
+# Getting below error in python2
+# from .csrf import CSRFProtect, CsrfProtect 
