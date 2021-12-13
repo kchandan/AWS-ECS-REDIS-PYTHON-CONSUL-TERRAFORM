@@ -34,6 +34,7 @@ resource "aws_ecs_service" "this" {
 
 module "elb" {
   source = "terraform-aws-modules/elb/aws"
+  version = "1.2.0"  
 
   name = "${var.service_name}-alb"
 

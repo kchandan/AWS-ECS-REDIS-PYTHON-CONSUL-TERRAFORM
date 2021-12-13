@@ -2,6 +2,7 @@
 provider "aws" {
   region = "us-east-1"
   profile = "${var.aws_profile}"
+  version = "1.15.0"
 }
 
 #
@@ -17,6 +18,7 @@ resource "aws_key_pair" "app_key" {
 #
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "1.30.0"
 
   name = "modules-example"
 
@@ -125,7 +127,9 @@ resource "aws_security_group" "myapp-elb-securitygroup" {
 
 resource "aws_instance" "consul" {
   instance_type = "t2.micro"
-  ami = "ami-5eaf8124"
+  # ami = "ami-5eaf8124"
+  # ami = "ami-052cef05d01020f1d"
+  ami = "ami-0e1c5b8871df7ed4c"
 
   tags {
     Name = "Consul"
@@ -147,6 +151,7 @@ resource "aws_instance" "consul" {
 #
 module "autoscaling" {
   source = "terraform-aws-modules/autoscaling/aws"
+  version = "2.2.2" 
 
   name = "modules-myapp"
 
